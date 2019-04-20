@@ -11,27 +11,41 @@
 </head>
 <body>
     <div class="header">
-      <img src="img/span-logo.png" class="header__logo">
+        <div class="header__flexbox">
+            <img src="img/span-logo.png" class="header__flexbox__logo">
+            <div class="header__flexbox__right">
+              <div class="header__flexbox__right__icon">
+                <img src="img/delivery-icon.png" class="header__flexbox__right__icon__img">
+                <span class="header__flexbox__right__icon__text">Delivery</span>
+              </div>
       
-      <div class="header__right">
-        
-        <div class="header__right__icon">
-          <img src="img/delivery-icon.png" class="header__right__icon__img">
-          <span class="header__right__icon__text">Delivery</span>
+              <div class="header__flexbox__right__profile">
+                <div class="header__flexbox__right__profile__pic"></div>
+              </div>
+      
+              <div class="header__flexbox__right__menu">
+                  <i class="material-icons" style="width:16px;height:16px;">apps</i>
+              </div>
+    
+              <div class="header__flexbox__right__dropdown" style="float:right;">
+                <button class="header__flexbox__right__dropdown__dropbtn"><i class="material-icons">apps</i></button>
+                <div class="header__flexbox__right__dropdown__dropdown-content">
+                  <div class="header__flexbox__right__icon-mobile">
+                    <img src="img/delivery-icon.png" class="header__flexbox__right__icon-mobile__img-mobile">
+                    <span class="header__flexbox__right__icon-mobile__text-mobile">Delivery</span>
+                    <div class="header__flexbox__right__profile-mobile">
+                      <div class="header__flexbox__right__profile-mobile__pic-mobile"></div>
+                    </div>
+                  </div>        
+                </div>
+              </div>
+    
+            </div>
+          </div>
         </div>
-
-        <div class="header__right__profile">
-          <div class="header__right__profile__pic"></div>
-        </div>
-
-        <div class="header__right__menu">
-            <i class="material-icons" style="width:16px;height:16px;">apps</i>
-        </div>
-
-      </div>
-    </div>
 
     <div class="navbar">
+
       <div class="navbar__item">
         <a style="color:#3e3e3e;">All deliveries</a>
       </div>
@@ -41,11 +55,21 @@
       <div class="navbar__item">
         <a href="newdelivery.html">New delivery request</a>
       </div>
+
+      <div class="navbar__dropdown">
+        <button class="navbar__dropdown__dropbtn"><i class="fas fa-bars"></i></button>
+        <div class="navbar__dropdown__dropdown-content">
+          <a style="color:#3e3e3e;">All deliveries</a>          
+          <a href="nodeliveries.html">My deliveries</a>
+          <a href="newdelivery.html">New delivery request</a>         
+        </div>
+      </div>
       
-      <div class="navbar__item__search">
-        <input class="navbar__item__search__input" type="text" placeholder="Ivan Horvat">
+      <div class="navbar__item__search mobile">
+        <input class="navbar__item__search__input mobile-input" type="text" placeholder="Ivan Horvat">
         <i class="fas fa-search"></i>
       </div>
+
     </div>
 
     <div class="title">
