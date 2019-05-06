@@ -1,17 +1,17 @@
 'use strict';
 
-$(".pagination").append("<a id ='previous-page' href='#'>Previous</a>");
+$(".pagination").append("<a id ='previous-page' href='javascript:void(0)'>Previous</a>");
 var numberOfItems = $("#loop .card--1").length;
 var limitPerPage = 2;
 $("#loop .card--1:gt(" + (limitPerPage -1) + ")").hide();
 var totalPages = Math.round(numberOfItems / limitPerPage);
-$(".pagination").append("<a class='current-page active' href='#'>" + 1 + "</a>");
+$(".pagination").append("<a class='current-page active' href='javascript:void(0)'>" + 1 + "</a>");
 
 for (var i = 2; i <= totalPages; i++) {
-    $(".pagination").append("<a class='current-page' href='#'>" + i + "</a>");
+    $(".pagination").append("<a class='current-page' href='javascript:void(0)'>" + i + "</a>");
 }
 
-$(".pagination").append("<a id='next-page' href='#'>Next</a>");
+$(".pagination").append("<a id='next-page' href='javascript:void(0)'>Next</a>");
 
 $(".pagination a.current-page").on("click", function() {
     if($(this).hasClass("active")) {
