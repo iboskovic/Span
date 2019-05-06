@@ -199,10 +199,9 @@ body {
 .center {
     text-align: center;
     margin-top: 40px;
-    
 }
 .pagination {
-    display: inline-block;
+    display: inline-block;   
 }
 
 .pagination a {
@@ -212,6 +211,7 @@ body {
     text-decoration: none;
     transition: background-color .3s;
     border: 1px solid $lightgrey;
+    box-shadow: $shadow;
     font-size: 14pt;
 }
 
