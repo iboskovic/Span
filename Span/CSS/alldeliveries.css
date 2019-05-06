@@ -193,6 +193,8 @@ body {
 
 .pagination {
   display: inline-block;
+  border: 1px solid #7d7d7d;
+  border-radius: 3px;
 }
 
 .pagination a {
@@ -203,9 +205,16 @@ body {
   -webkit-transition: background-color .3s;
   transition: background-color .3s;
   border: 1px solid #7d7d7d;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
   -webkit-box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.15);
           box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.15);
   font-size: 14pt;
+}
+
+.pagination a:first-child {
+  border-left: none;
 }
 
 .pagination a.active {

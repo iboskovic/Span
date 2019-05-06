@@ -202,6 +202,8 @@ body {
 }
 .pagination {
     display: inline-block;   
+    border: 1px solid $lightgrey;
+    border-radius: 3px;
 }
 
 .pagination a {
@@ -211,8 +213,15 @@ body {
     text-decoration: none;
     transition: background-color .3s;
     border: 1px solid $lightgrey;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
     box-shadow: $shadow;
     font-size: 14pt;
+
+    &:first-child{
+        border-left: none;
+    }
 }
 
 .pagination a.active {
