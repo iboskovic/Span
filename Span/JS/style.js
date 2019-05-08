@@ -74,12 +74,11 @@ $("#previous-page").on("click", function () {
 $(document).ready(function(){
     $("#myinput").on("keyup", function() {
       var value = $(this).val().toLowerCase();
-      $(".list *").filter(function() {
+      $(".card--1").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
-  });
+});
   
 
- 
 
