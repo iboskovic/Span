@@ -1,5 +1,7 @@
 'use strict';
 
+//Pagination
+
 $(".pagination").append("<a id ='previous-page' href='javascript:void(0)'>Previous</a>");
 var numberOfItems = $("#loop .card--1").length;
 var limitPerPage = 2;
@@ -65,3 +67,19 @@ $("#previous-page").on("click", function () {
         $(".pagination a.current-page:eq(" + (currentPage - 1) + ")").addClass("active");
     }
 });
+
+
+//Search
+
+$(document).ready(function(){
+    $("#myinput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $(".list *").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  
+
+ 
+

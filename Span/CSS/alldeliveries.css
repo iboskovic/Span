@@ -19,6 +19,7 @@ body {
   left: 0;
   right: 0;
   height: 140px;
+  z-index: 10;
 }
 
 .header__flexbox {
@@ -179,10 +180,64 @@ body {
   color: #7d7d7d;
   text-transform: uppercase;
   margin: 0px 83px;
+  cursor: pointer;
 }
 
+.title__sort:hover {
+  color: #3e3e3e;
+}
+
+/* Sort button styling */
+.title__sort {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content-two {
+  display: none;
+  position: absolute;
+  background-color: #e1e1e1;
+  min-width: 150px;
+  right: 0;
+  z-index: 1;
+  -webkit-box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  border-top-right-radius: 0;
+}
+
+.dropdown-content-two a {
+  color: #3e3e3e;
+  text-decoration: none;
+  display: block;
+  margin: 5px;
+}
+
+.dropdown-content-two a:hover {
+  background-color: #c0c0c0;
+  -webkit-transition: .2s ease-in-out;
+  transition: .2s ease-in-out;
+}
+
+.title__sort:hover .dropdown-content-two {
+  display: block;
+}
+
+.title__sort:hover .title__sort__sort-create {
+  background-color: #e1e1e1;
+  border-radius: 5px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Sort styling ends */
 .fa-angle-down {
   padding: 5px;
+  cursor: pointer;
+}
+
+.fa-angle-down:hover {
+  color: #3e3e3e;
 }
 
 /* Pagination */
@@ -193,7 +248,6 @@ body {
 
 .pagination {
   display: inline-block;
-  border: 1px solid #7d7d7d;
   border-radius: 3px;
 }
 
@@ -205,16 +259,19 @@ body {
   -webkit-transition: background-color .3s;
   transition: background-color .3s;
   border: 1px solid #7d7d7d;
-  border-top: none;
-  border-bottom: none;
-  border-right: none;
   -webkit-box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.15);
           box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.15);
   font-size: 14pt;
 }
 
 .pagination a:first-child {
-  border-left: none;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.pagination a:last-child {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .pagination a.active {

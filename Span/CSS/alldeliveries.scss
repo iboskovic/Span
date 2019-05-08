@@ -25,6 +25,7 @@ body {
     left: 0;
     right: 0;
     height: 140px;
+    z-index: 10;
 
     &__flexbox {
         display: flex;
@@ -176,7 +177,6 @@ body {
         margin-left: 67px;
         margin-top: 253px;
         position: relative; 
-
     }
 
     &__sort {
@@ -186,12 +186,62 @@ body {
         color: $lightgrey;
         text-transform: uppercase;
         margin: 0px 83px;
-        
+        cursor: pointer;
+        &:hover {
+            color: $grey;
+        }
     }
 }
 
+/* Sort button styling */
+.title__sort {
+    position: relative;
+    display: inline-block; 
+}
+
+.dropdown-content-two {
+    display: none;
+    position: absolute;
+    background-color: #e1e1e1;
+    min-width: 150px;
+    right: 0;
+    z-index: 1;
+    box-shadow: $shadow;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+}
+
+.dropdown-content-two a {
+    color: $grey;
+    text-decoration: none;
+    display: block;
+    margin: 5px;
+}
+
+.dropdown-content-two a:hover {
+    background-color: #c0c0c0;
+    transition: .2s ease-in-out;
+}
+
+.title__sort:hover .dropdown-content-two {
+    display: block;
+}
+
+.title__sort:hover .title__sort__sort-create {
+    background-color: #e1e1e1;
+    border-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+/* Sort styling ends */
+
+
 .fa-angle-down {
     padding: 5px;
+    cursor: pointer;
+    &:hover {
+        color: $grey;
+    }
 }
 
 
@@ -202,7 +252,7 @@ body {
 }
 .pagination {
     display: inline-block;   
-    border: 1px solid $lightgrey;
+    //border: 1px solid $lightgrey;
     border-radius: 3px;
 }
 
@@ -213,14 +263,17 @@ body {
     text-decoration: none;
     transition: background-color .3s;
     border: 1px solid $lightgrey;
-    border-top: none;
-    border-bottom: none;
-    border-right: none;
     box-shadow: $shadow;
     font-size: 14pt;
 
-    &:first-child{
-        border-left: none;
+    &:first-child {
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+
+    &:last-child {
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
     }
 }
 
@@ -430,6 +483,7 @@ body {
                     }
     
                     &__dropdown-content a:hover { 
+                        
                     }
                 }
 
