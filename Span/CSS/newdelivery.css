@@ -627,6 +627,22 @@ body {
   float: right;
 }
 
+.cards__main--card__wrapper__input12__radio__item__input__textarea::-webkit-input-placeholder {
+  padding: 8px;
+}
+
+.cards__main--card__wrapper__input12__radio__item__input__textarea:-ms-input-placeholder {
+  padding: 8px;
+}
+
+.cards__main--card__wrapper__input12__radio__item__input__textarea::-ms-input-placeholder {
+  padding: 8px;
+}
+
+.cards__main--card__wrapper__input12__radio__item__input__textarea::placeholder {
+  padding: 8px;
+}
+
 .cards__main--card__wrapper__input13 {
   margin: 50px 0;
   width: 300px;

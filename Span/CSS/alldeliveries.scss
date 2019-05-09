@@ -167,7 +167,6 @@ body {
 
 /* Main title under nav bar and header */
 .title {
-
     &__main {
         display: inline-block;
         font-family: $montserrat;
@@ -185,7 +184,7 @@ body {
         float: right;
         color: $lightgrey;
         text-transform: uppercase;
-        margin: 0px 83px;
+        margin: -30px 83px;
         cursor: pointer;
         &:hover {
             color: $grey;
@@ -196,7 +195,8 @@ body {
 /* Sort button styling */
 .title__sort {
     position: relative;
-    display: inline-block; 
+    
+    
 }
 
 .dropdown-content-two {
@@ -246,18 +246,36 @@ body {
 
 
 /* Pagination */
-.center {
+#test-list {
     text-align: center;
-    margin-top: 40px;
+    
 }
 .pagination {
     display: inline-block;   
-    //border: 1px solid $lightgrey;
+    border-radius: 5px;
+    list-style: none;
+    margin: 6px 24px;
+    
+}
+
+li {
+    display: inline-block;
+    margin-right: 3px;
+    transition: all 250ms ease-in-out;
     border-radius: 3px;
+
+    &.active {
+        background-color: $grey;
+        border-radius: 3px;
+        
+        a {
+            color: #fff;
+        }
+    }
 }
 
 .pagination a {
-    display: inline-block;
+    display: block;
     color: $lightgrey;
     padding: 8px 16px;
     text-decoration: none;
@@ -265,81 +283,86 @@ body {
     border: 1px solid $lightgrey;
     box-shadow: $shadow;
     font-size: 14pt;
+    border-radius: 5px;
 
-    &:first-child {
-        border-bottom-left-radius: 5px;
-        border-top-left-radius: 5px;
-    }
-
-    &:last-child {
-        border-bottom-right-radius: 5px;
-        border-top-right-radius: 5px;
+    &:hover {
+        background-color: $grey;
     }
 }
-
-.pagination a.active {
-    background-color:  $grey;
-    color: #fff;
-}
-
-.pagination a:hover:not(.active) {
-    background-color: $grey;
-}
-
 /* Pagination ends */
 
 
 /* Listed deliveries */
-.card--1 {
+
+.d {
+
+    &--ib {
+        display: inline-block;
+    }
+}
+
+.card {
     top: 37px;
     margin-top: 15px;
     margin-left: 60px;
     margin-right: 60px;
-    height: 54px;
-    display: block;
-    
     position: relative;
     box-shadow: $shadow;
     border-radius: 5px;
+    padding: 18px;
+    text-align: center;
+    white-space: nowrap;
 
-    &__flex-container {
-        display: flex;
-        width: 100%;
-        position: absolute;
-
-        &__from {
-            flex-grow: 50;
-            margin: 18px;
-            font-size: 15px;
-            font-weight: bold;
-            color: $red;
-        }
-
-        &__date {
-            margin: 18px 2px 18px 0; 
-            flex-grow: 1;
-            text-align: center;
-            font-size: 15px;
-            color: $lightgrey;
-        }
-
-        &__red {
-            flex-grow: 1;
-            margin: 18px 18px 18px 0;
-            background-color: $red;
-            border-radius: 5px;
-            text-align: center;
-            height: 20px;
-
-            &__creator {
-                margin: 1px;
-                text-align: center;
-                font-size: 15px;
-                color: #fff;
-            }
-        }
-    }
+    /* Clearfix */
+    &:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+      }
 }
+
+.highlighted {
+    display: inline-block;
+    float: right;
+    margin: 0 8px;
+    font-size: 15px;
+    color: $lightgrey;
+  }
+
+.sender {
+    background-color: $red;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 15px;
+    color: #fff;
+}
+
+.name {
+    font-size: 15px;
+    font-weight: bold;
+    color: $red;
+}
+
+.date {
+    font-size: 15px;
+    color: $lightgrey;
+}
+
+.push {
+    float: right;
+  }
+  
+  .pull {
+    float: left;
+  }
+
+  .highlight {
+    font-size: 15px;
+    color: $lightgrey;
+  }
 
 .fa-bars {
     color: $lightgrey;
@@ -418,11 +441,19 @@ body {
         letter-spacing: 1.5px;
         color: $lightgrey;
         text-transform: uppercase;
-        text-align: center;   
+        text-align: center; 
+        margin-top: -30px;  
     }
 
-    .center {
-        margin: 40px 20px;
+    
+
+    .dropdown-content-two {
+        text-align: left;
+    }
+    
+    .pagination {
+        margin: 30px 110px;
+        font-size: 20pt;
     }
 }
 
@@ -588,11 +619,20 @@ body {
         letter-spacing: 1.5px;
         color: $lightgrey;
         text-transform: uppercase;
-        margin-top: 10px;         
+        margin: -30px 83px ;         
     }
 
     .center {
        margin: 40px 20px;
+    }
+
+    .dropdown-content-two {
+        text-align: left;
+    }
+    
+    .pagination {
+        margin: 30px 70px;
+        font-size: 20pt;
     }
 }
 
@@ -763,6 +803,7 @@ body {
     .title {
 
         &__main {
+            display: inline-block;
             font-family: $montserrat;
             font-size: 45px;
             font-weight: 100;
@@ -775,19 +816,22 @@ body {
         }
     
         &__sort {
+            float: right;
             font-size: 12px;
             letter-spacing: 1.5px;
             color: $lightgrey;
             text-transform: uppercase;
-            margin: 0px 100px;  
+            margin: -30px 83px;  
         }
     }
-    .center {
-        text-align: center;
-        margin: 40px 20px;
+
+    .dropdown-content-two {
+        text-align: left;
     }
-    .pagination a {
-        font-size: 12pt;
+    
+    .pagination {
+        margin: 30px 50px;
+        font-size: 20pt;
     }
 }
 
@@ -991,66 +1035,15 @@ body {
             text-align: center;
         }
     
-        &__sort {
+        &__sort {           
             font-size: 12px;
             letter-spacing: 1.5px;
             color: $lightgrey;
             text-transform: uppercase;
-            margin: 30px 30px;
-
-                    
+            margin: 10px 35%;
+            width: 100px;           
         }
-    }
-
-    .card--1 {
-        top: 60px;
-        margin-top: 15px;
-        margin-left: 20px;
-        margin-right: 20px;
-        height: 54px;
-        display: block;
-        position: relative;
-        box-shadow: $shadow;
-        border-radius: 5px;
-
-        &__flex-container {
-            display: flex;
-            width: 100%;
-            position: absolute;
-
-            &__from {
-                flex-grow: 50;
-                margin: 15px;
-                font-size: 12px;
-                font-weight: bold;
-                color: $red;
-            }
-
-            &__date {
-                margin: 18px 2px 18px 0; 
-                flex-grow: 1;
-                text-align: center;
-                font-size: 12px;
-                color: $lightgrey;
-            }
-
-            &__red {
-                flex-grow: 1;
-                margin: 13px 18px 18px 0;
-                background-color: $red;
-                border-radius: 5px;
-                text-align: center;
-                height: 30px;
-
-                &__creator {
-                    margin: 1px;
-                    text-align: center;
-                    font-size: 12px;
-                    color: #fff;
-                }
-            }
-        }
-    }
+    }  
 }
 
 

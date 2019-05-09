@@ -1,84 +1,340 @@
 'use strict';
 
-//Pagination
-
-$(".pagination").append("<a id ='previous-page' href='javascript:void(0)'>Previous</a>");
-var numberOfItems = $("#loop .card--1").length;
-var limitPerPage = 2;
-$("#loop .card--1:gt(" + (limitPerPage -1) + ")").hide();
-var totalPages = Math.round(numberOfItems / limitPerPage);
-$(".pagination").append("<a class='current-page active' href='javascript:void(0)'>" + 1 + "</a>");
-
-for (var i = 2; i <= totalPages; i++) {
-    $(".pagination").append("<a class='current-page' href='javascript:void(0)'>" + i + "</a>");
-}
-
-$(".pagination").append("<a id='next-page' href='javascript:void(0)'>Next</a>");
-
-$(".pagination a.current-page").on("click", function() {
-    if($(this).hasClass("active")) {
-        return false;
-    } else {
-        var currentPage = $(this).index();
-        $(".pagination a").removeClass("active");
-        $(this).addClass("active");
-        $("#loop .card--1").hide();
-
-        var grandTotal = limitPerPage * currentPage;
-       
-        for (var i = grandTotal - limitPerPage; i < grandTotal; i++) {
-            $("#loop .card--1:eq(" + i + ")").show();
-        }
-    }
-});
-
-$("#next-page").on("click", function () {
-    var currentPage = $(".pagination a.active").index();
-    if (currentPage === totalPages) {
-        return false;
-    } else {
-        currentPage++;
-        $(".pagination a").removeClass("active");
-        $("#loop .card--1").hide();
-
-        var grandTotal = limitPerPage * currentPage;
-       
-        for (var i = grandTotal - limitPerPage; i < grandTotal; i++) {
-            $("#loop .card--1:eq(" + i + ")").show();
-        }
-        $(".pagination a.current-page:eq(" + (currentPage - 1) + ")").addClass("active");
-    }
-});
-
-$("#previous-page").on("click", function () {
-    var currentPage = $(".pagination a.active").index();
-    if (currentPage === 1) {
-        return false;
-    } else {
-        currentPage--;
-        $(".pagination a").removeClass("active");
-        $("#loop .card--1").hide();
-
-        var grandTotal = limitPerPage * currentPage;
-       
-        for (var i = grandTotal - limitPerPage; i < grandTotal; i++) {
-            $("#loop .card--1:eq(" + i + ")").show();
-        }
-        $(".pagination a.current-page:eq(" + (currentPage - 1) + ")").addClass("active");
-    }
-});
-
-
 //Search
 
-$(document).ready(function(){
+/*$(document).ready(function(){
     $("#myinput").on("keyup", function() {
       var value = $(this).val().toLowerCase();
-      $(".card--1").filter(function() {
+      $("#users .card").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
 });
-  
+  */
+//Cards for search
 
+var options = {
+  valueNames: [ 'name', 'date', 'sender' ],
+  // Since there are no elements in the list, this will be used as template.
+  item: '<div class="card"><div class="name pull"></div><div class="sender d--ib push"></div><div class="highlighted">by</div><div class="d--ib push"><span class="highlight">Created </span><span class="date"></span></div></div>',
+  page: 3,
+    pagination: {
+      innerWindow: 5,
+      left: 0,
+      right: 0,
+      paginationClass: "pagination",
+    },
+};
+
+var values = [
+  {
+    name: 'Zračna luka Zagreb',
+    date: 2016.,
+    sender: 'Ivan Horvat'
+  },
+  {
+    name: 'Hrvatska radiotelevizija',
+    date: 2016.,
+    sender: 'Ivan Horvat'
+  },
+  {
+    name: 'Mup RH',
+    date: 2018.,
+    sender: 'Miro Mirović'
+  },
+  {
+    name: 'Hrvatska pošta',
+    date: 2017.,
+    sender: 'Ivan Ivanović'
+  },
+  {
+    name: 'Hrvatski zavod za javno zdravstvo',
+    date: 2019.,
+    sender: 'Ivo Ivić'
+  },
+  {
+    name: 'Mup RH',
+    date: 2015.,
+    sender: 'Pero Perić'
+  },
+  {
+    name: 'Zračna luka Zagreb',
+    date: 2017.,
+    sender: 'Ivan Horvat'
+  },
+  {
+    name: 'Hrvatska radiotelevizija',
+    date: 2019.,
+    sender: 'Marko Marković'
+  },
+  {
+    name: 'Mup RH',
+    date: 2018.,
+    sender: 'Miro Mirović'
+  },
+  {
+    name: 'Hrvatska pošta',
+    date: 2014.,
+    sender: 'Ivan Ivanović'
+  },
+  {
+    name: 'Hrvatski zavod za javno zdravstvo',
+    date: 2016.,
+    sender: 'Ivo Ivić'
+  },
+  {
+    name: 'McDonalds',
+    date: 2015,
+    sender: 'Pero Perić'
+  },
+  {
+    name: 'Zračna luka Zagreb',
+    date: 2017,
+    sender: 'Ivan Horvat'
+  },
+  {
+    name: 'Hrvatska radiotelevizija',
+    date: 2019,
+    sender: 'Marko Marković'
+  },
+  {
+    name: 'Mup RH',
+    date: 2015,
+    sender: 'Miro Mirović'
+  },
+  {
+    name: 'Hrvatska pošta',
+    date: 2018,
+    sender: 'Ivan Ivanović'
+  },
+  {
+    name: 'Hrvatski zavod za javno zdravstvo',
+    date: 2016,
+    sender: 'Ivo Ivić'
+  },
+  {
+    name: 'McDonalds',
+    date: 2014,
+    sender: 'Pero Perić'
+  },
+  {
+    name: 'Zračna luka Zagreb',
+    date: 2017,
+    sender: 'Ivan Horvat'
+  },
+  {
+    name: 'Hrvatska radiotelevizija',
+    date: 2015,
+    sender: 'Marko Marković'
+  },
+  {
+    name: 'Mup RH',
+    date: 2018,
+    sender: 'Miro Mirović'
+  },
+  {
+    name: 'Hrvatska pošta',
+    date: 2019,
+    sender: 'Ivan Ivanović'
+  },
+  {
+    name: 'Hrvatski zavod za javno zdravstvo',
+    date: 2018,
+    sender: 'Ivo Ivić'
+  },
+  {
+    name: 'McDonalds',
+    date: 2019,
+    sender: 'Pero Perić'
+  },
+  {
+    name: 'Zračna luka Zagreb',
+    date: 2014,
+    sender: 'Ivan Horvat'
+  },
+  {
+    name: 'Hrvatska radiotelevizija',
+    date: 2018,
+    sender: 'Marko Marković'
+  },
+  {
+    name: 'Mup RH',
+    date: 2017,
+    sender: 'Miro Mirović'
+  },
+  {
+    name: 'Hrvatska pošta',
+    date: 2015,
+    sender: 'Ivan Ivanović'
+  },
+  {
+    name: 'Hrvatski zavod za javno zdravstvo',
+    date: 2017,
+    sender: 'Ivo Ivić'
+  },
+  {
+    name: 'McDonalds',
+    date: 2019,
+    sender: 'Pero Perić'
+  },
+  {
+    name: 'Zračna luka Zagreb',
+    date: 2014,
+    sender: 'Ivan Horvat'
+  },
+  {
+    name: 'Hrvatska radiotelevizija',
+    date: 2018,
+    sender: 'Marko Marković'
+  },
+  {
+    name: 'Mup RH',
+    date: 2015,
+    sender: 'Miro Mirović'
+  },
+  {
+    name: 'Hrvatska pošta',
+    date: 2019,
+    sender: 'Javor Horvat'
+  },
+  {
+    name: 'Hrvatski zavod za javno zdravstvo',
+    date: 2017,
+    sender: 'Jadranka Stjepanić'
+  },
+  {
+    name: 'McDonalds',
+    date: 2018,
+    sender: 'Marinela Jugovac'
+  },
+  {
+    name: 'Zračna luka Zagreb',
+    date: 2016,
+    sender: 'Kristofor Jugovac'
+  },
+  {
+    name: 'Hrvatska radiotelevizija',
+    date: 2017,
+    sender: 'Vlatka Ivanović'
+  },
+  {
+    name: 'Mup RH',
+    date: 2015,
+    sender: 'Alojz Petrović'
+  },
+  {
+    name: 'Hrvatska pošta',
+    date: 2014,
+    sender: 'Dragica Kokot'
+  },
+  {
+    name: 'Hrvatski zavod za javno zdravstvo',
+    date: 2019,
+    sender: 'Terezija Kovačić'
+  },
+  {
+    name: 'McDonalds',
+    date: 2016,
+    sender: 'Pavao Kovac'
+  },{
+    name: 'Zračna luka Zagreb',
+    date: 2014,
+    sender: 'Robert Bogdanić'
+  },
+  {
+    name: 'Hrvatska radiotelevizija',
+    date: 2015,
+    sender: 'Danijela Vlahović'
+  },
+  {
+    name: 'Mup RH',
+    date: 2019,
+    sender: 'Lazar Stojanović'
+  },
+  {
+    name: 'Hrvatska pošta',
+    date: 2016,
+    sender: 'Mislav Vlašić'
+  },
+  {
+    name: 'Hrvatski zavod za javno zdravstvo',
+    date: 2017,
+    sender: 'Jurica Vinković'
+  },
+  {
+    name: 'McDonalds',
+    date: 2017,
+    sender: 'Rajko Jurić'
+  },
+  {
+    name: 'Zračna luka Zagreb',
+    date: 2016,
+    sender: 'Zlatica Dragović'
+  },
+  {
+    name: 'Hrvatska radiotelevizija',
+    date: 2019,
+    sender: 'Kristijan Stojanović'
+  },
+  {
+    name: 'Mup RH',
+    date: 2018,
+    sender: 'Bruno Broz'
+  },
+  {
+    name: 'Hrvatska pošta',
+    date: 2019,
+    sender: 'Ana Mlakar'
+  },
+  {
+    name: 'Hrvatski zavod za javno zdravstvo',
+    date: 2016,
+    sender: 'Kruno Novak'
+  },
+  {
+    name: 'McDonalds',
+    date: 2017.,
+    sender: 'Teo Stojanović'
+  },
+  {
+    name: 'Zračna luka Zagreb',
+    date: 2018,
+    sender: 'Matej Adamić'
+  },
+  {
+    name: 'Hrvatska radiotelevizija',
+    date: 2017,
+    sender: 'Edi Kovačić'
+  },
+  {
+    name: 'Mup RH',
+    date: 2016,
+    sender: 'Dragana Vinković'
+  },
+  {
+    name: 'Hrvatska pošta',
+    date: 2019,
+    sender: 'Marinka Perko'
+  },
+  {
+    name: 'Hrvatski zavod za javno zdravstvo',
+    date: 2018,
+    sender: 'Henrik Petrić'
+  },
+  {
+    name: 'McDonalds',
+    date: 2017,
+    sender: 'Ivan Grbić'
+  },
+];
+
+var userList = new List('users', options, values);
+
+
+//Pagination
+
+var monkeyList = new List('test-list', {
+    valueNames: ['card'],
+    
+});
 

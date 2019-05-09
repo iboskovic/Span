@@ -622,6 +622,10 @@ body {
                                 border: solid 1px #dededf;
                                 border-radius: 4px;
                                 float: right;
+
+                                &::placeholder {
+                                    padding: 8px;
+                                }
                             }
                         }
                     }
